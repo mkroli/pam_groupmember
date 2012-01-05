@@ -1,0 +1,36 @@
+.TH pam_groupmember 8
+.SH NAME
+pam_groupmember \- A PAM module that checks the user to be member of a specific
+group
+.SH OVERVIEW
+.PP
+If you want for a example a (PAM compatible) service to be only accessible for
+some of your system users, simply add the users to a group and add this module
+with the group(s) to the PAM configuration of the service.
+.br
+pam_groupmember will now each time a user tries to authenticate check if this
+user is in one of the specified groups and only then permits the
+authentication.
+.SH CONFIGURATION
+.PP
+pam_groupmember only uses accounting from PAM. The groups which are allowed are
+OR associated and simply added as parameters to pam_groupmember:
+.IP
+.nf
+    account required pam_groupmember.so mail sendmail
+.fi
+.PP
+If you want a user to be in more than one group or if you want the groups be
+AND associated, simply write more than one line:
+.IP
+.nf
+    account required pam_groupmember.so mail
+    account required pam_groupmember.so sendmail
+.fi
+.SH SEE ALSO
+.BR PAM.CONF (5),
+.SH AUTHOR
+pam_groupmember was written by Michael Krolikowski <mkroli@yahoo.de>.
+.PP
+This manual page was written by Michael Krolikowski <mkroli@yahoo.de>,
+for the Debian project (but may be used by others).

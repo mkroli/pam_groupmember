@@ -1,0 +1,17 @@
+Source: libpam-groupmember
+Section: admin
+Priority: extra
+Maintainer: Michael Krolikowski <mkroli@yahoo.de>
+Build-Depends: cdbs, debhelper (>= 5), autotools-dev, libpam0g-dev
+Standards-Version: 3.7.2
+
+Package: libpam-groupmember
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PAM module that checks groupmemberships
+ This PAM module checks a user being member of a group.
+ You can define a group which a user must be member of to pass
+ this module.
+ You can for instance add this module with group G set to
+ "/etc/pam.d/[service]"; now only users which are member of the
+ group G can use [service].
